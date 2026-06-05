@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FAN-TAN - LIVE CASINO</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 🎨 লাইভ এশিয়ান ক্যাসিনো টেবিল সিএসএস ফ্রেম ইনজেকশন ভাই ভাই */
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #05070c; font-family: 'Segoe UI', Roboto, sans-serif; color: #fff; -webkit-tap-highlight-color: transparent; user-select: none; }
+        .header { display: none !important; } 
+        
+        body { 
+            background: radial-gradient(circle at center, #0e1a2f 0%, #04060a 100%); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 100vh; 
+        }
+
+        /* 🏟️ ওরিজিনাল ঐতিহ্যবাহী লাক্সারি ফ্যান-টান গোল্ডেন-গ্রীন কার্পেট বোর্ড */
+        .fantan-table-surface {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 300px;
+            margin: 15px auto 0 auto;
+            background: radial-gradient(circle at center, #0c542d 0%, #053319 80%, #021a0c 100%);
+            border: 8px solid #5a3d12;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* 🔮 লাইভ গোল্ডেন পুঁতি কন্টেইনার জোন */
+        .beads-display-bowl {
+            position: relative;
+            width: 85%;
+            height: 85%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .gold-bead-node {
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle at 35% 35%, #fff6b3 0%, #ffcc00 40%, #b38600 85%, #664d00 100%);
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.65), inset -1px -1px 3px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 🎯 ৪-লাইন নিওন বেটিং নাম্বার গ্রিড বোর্ড */
+        .fantan-grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 450px;
+            margin: 5px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .fantan-number-box {
+            background: linear-gradient(180deg, #151f35 0%, #0b111c 100%);
+            border: 2px solid #233252;
+            border-radius: 14px;
+            padding: 14px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: #8894b0;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: all 0.15s ease;
+        }
+
+        .fantan-number-box.active-fantan-bet {
+            border-color: #ffbb00 !important;
+            color: #ffbb00 !important;
+            background: linear-gradient(180deg, #2a2005 0%, #120e02 100%) !important;
+            box-shadow: 0 0 15px rgba(255,187,0,0.4), inset 0 0 10px rgba(255,187,0,0.2) !important;
+            transform: scale(1.03);
+        }
+
+        /* 📢 লাইভ মেসেজ প্যানেল বার */
+        .win-status-container { position: relative; z-index: 10; text-align: center; padding: 10px; margin: 5px 12px; background: rgba(9, 12, 18, 0.6); border-radius: 10px; border: 1px solid rgba(255,255,255,0.02); }
+        #win-text-msg { font-size: 12px; font-weight: 700; color: #38bdf8; letter-spacing: 0.3px; }
+
+        /* 🎛️ নিচের মেইন গেম কন্ট্রোল প্যানেল ফুটার (১৫ পিক্সেল ওপরে লিফটিং সুপ্রিম লক) */
+        .footer-controls { position: relative; z-index: 50; background: #07090e; border-top: 1px solid #161b29; padding: 15px 15px 38px 15px; box-shadow: 0 -8px 25px rgba(0,0,0,0.7); }
+        .play-section { display: flex; justify-content: space-between; align-items: center; gap: 10px; max-width: 450px; margin: 0 auto; margin-bottom: 25px; }
+        .bet-btn-nav { background: #111522; border: 1px solid #20293d; color: #ffaa00; font-size: 18px; font-weight: 800; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .play-btn { flex: 1; background: linear-gradient(180deg, #ffbb00 0%, #d48800 100%); color: #000; font-size: 15px; font-weight: 900; border: none; padding: 12px 0; border-radius: 10px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(212,136,0,0.3); }
+        .play-btn:disabled { background: #141721 !important; border-color: #1f2536 !important; color: #4b5563 !important; box-shadow: none !important; cursor: not-allowed; }
+        .icon-btn { background: #111522; border: 1px solid #20293d; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #ffaa00; font-weight: bold; }
+        .icon-btn.active { background: #ffaa00; color: #000; box-shadow: 0 0 10px rgba(255,170,0,0.4); }
+
+        .win-glow-bar { border-color: rgba(0, 255, 136, 0.4) !important; background: rgba(0, 255, 136, 0.05) !important; }
+        .win-glow-bar #win-text-msg { color: #00ff88 !important; }
+        .lose-glow-bar { border-color: rgba(255, 51, 102, 0.4) !important; background: rgba(255, 51, 102, 0.05) !important; }
+        .lose-glow-bar #win-text-msg { color: #ff3366 !important; }
+    </style>
+</head>
+<body>
+
+    <div class="header" style="display:none !important;">
+        <div class="balance-box">৳ <span id="user-balance">0.00</span></div>
+    </div>
+
+    <!-- 🏟️ ওরিজিনাল ঐতিহ্যবাহী ফ্যান-টান গোল্ডেন-গ্রীন কার্পেট বোর্ড -->
+    <div class="fantan-table-surface">
+        <div class="beads-display-bowl" id="fantan-beads-container"></div>
+    </div>
+
+    <!-- 🎯 ৪-লাইন নিওন বেটিং নাম্বার গ্রিড বোর্ড -->
+    <div class="fantan-grid-container">
+        <div class="fantan-number-box" id="num-1" onclick="selectFanTanNumber(1)">1</div>
+        <div class="fantan-number-box" id="num-2" onclick="selectFanTanNumber(2)">2</div>
+        <div class="fantan-number-box" id="num-3" onclick="selectFanTanNumber(3)">3</div>
+        <div class="fantan-number-box" id="num-4" onclick="selectFanTanNumber(4)">4</div>
+    </div>
+
+    <!-- 📢 উইন-লস লাইভ ক্যাসিনো মেসেজ প্যানেল বার -->
+    <div class="win-status-container" id="win-status-box">
+        <span id="win-text-msg">পুঁতি সংখ্যা (১, ২, ৩, ৪) সিলেক্ট করে বাজি ধরুন ওস্তাদ!</span>
+    </div>
+
+    <!-- 🎛️ অ্যাকশন কন্ট্রোল ফুটার প্যানেল বার -->
+    <div class="footer-controls">
+        <div class="play-section">
+            <button class="bet-btn-nav" onclick="adjustBet('minus')">-</button>
+            <div style="text-align: center; width: 65px;">
+                <div style="font-size: 9px; color: #aaa; font-weight: bold;">STAKE</div>
+                <div style="font-size: 15px; font-weight: 900; color: #fff;" id="bet-display">৳৫০</div>
+            </div>
+            <button class="bet-btn-nav" onclick="adjustBet('plus')">+</button>
+
+            <button class="play-btn" id="spin-btn" onclick="handleFanTanPlayRoll()">PLACE BET</button>
+            
+            <div class="icon-group">
+                <button class="icon-btn" id="auto-btn" onclick="toggleAuto()">🤖</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlUserId = urlParams.get('userId') || urlParams.get('id') || urlParams.get('username') || "guest_user";
+        const urlWallet = urlParams.get('wallet') || "main";
+        const SERVER_URL = window.location.origin;
+
+        let balance = 0.00;
+        let currentBet = 50;
+        let isSpinning = false;
+        let isAuto = false;
+        let selectedNumber = null;
+        let autoInterval = null;
+
+        function adjustBet(action) {
+            if (isSpinning) return;
+            if (action === 'minus' && currentBet > 50) currentBet -= 50;
+            if (action === 'plus' && currentBet < 20000) currentBet += 50;
+            document.getElementById("bet-display").innerText = `৳${currentBet}`;
+            playAudio('click');
+        }
+
+        function selectFanTanNumber(num) {
+            if (isSpinning) return;
+            selectedNumber = num;
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`num-${i}`).classList.remove("active-fantan-bet");
+            }
+            document.getElementById(`num-${num}`).classList.add("active-fantan-bet");
+            playAudio('click');
+        }
+
+        // 🎰 [🎰 ডাইনামিক পুঁতি গণনা ও ৪-লাইন ডিস্ট্রিবিউশন এনিমেশন ইঞ্জিন ভাই ভাই]
+        function animateFanTanBeadsSorting(serverGameData) {
+            const container = document.getElementById("fantan-beads-container");
+            if (!container) return;
+            container.innerHTML = "";
+
+            let totalBeads = serverGameData.totalBeadsCount;
+            let finalResult = serverGameData.finalRemainderResult;
+
+            // ১. টেবিলে একগুচ্ছ গোল্ডেন পুঁতি পপ-আপ এনিমেশন ফ্লাশ
+            for (let i = 0; i < totalBeads; i++) {
+                const bead = document.createElement("div");
+                bead.className = "gold-bead-node";
+                container.appendChild(bead);
+                
+                               setTimeout(() => {
+                    bead.style.opacity = "1";
+                    bead.style.transform = "scale(1)";
+                }, i * 15);
+            }
+
+            playAudio('spin');
+
+            // ২. ৪টি করে পুঁতি সরিয়ে শেষ লাইনে নিখুঁত এলাইনমেন্ট টাইট লক ওস্তাদ!
+            setTimeout(() => {
+                container.innerHTML = "";
+                container.style.display = "flex";
+                container.style.justifyContent = "center";
+                container.style.gap = "10px";
+
+                // শুধুমাত্র শেষ লাইনের অবশিষ্ট পুঁতিগুলোই স্ক্রিনে জলজল করে কাউন্ট হবে!
+                for (let i = 0; i < finalResult; i++) {
+                    const bead = document.createElement("div");
+                    bead.className = "gold-bead-node";
+                    bead.style.opacity = "1";
+                    bead.style.transform = "scale(1.3)";
+                    bead.style.boxShadow = "0 0 10px #ffbb00";
+                    container.appendChild(bead);
+                    playAudio('click');
+                }
+
+                if (serverGameData.balance !== undefined) {
+                    balance = parseFloat(serverGameData.balance);
+                }
+                showFinalFanTanReward(serverGameData.status, finalResult, serverGameData.winAmount);
+
+            }, (totalBeads * 15) + 1200);
+        }
+
+        async function handleFanTanPlayRoll() {
+            if (isSpinning || isSpinning === true) return; 
+            if (!selectedNumber) {
+                alert("🔒 বাজি ধরার আগে ১, ২, ৩, বা ৪ পুঁতি সংখ্যা সিলেক্ট করুন ওস্তাদ!");
+                return;
+            }
+
+            isSpinning = true;
+            if (document.getElementById("spin-btn")) document.getElementById("spin-btn").disabled = true;
+            if (document.getElementById("win-status-box")) document.getElementById("win-status-box").className = "win-status-container";
+            if (document.getElementById("win-text-msg")) document.getElementById("win-text-msg").innerText = "🔮 ডিলারের বাটি খোলা হচ্ছে... পুঁতিগুলো ৪ ভাগে সাজানোর অপেক্ষা ওস্তাদ...";
+            playAudio('click');
+
+            try {
+                const response = await fetch(`${SERVER_URL}/api/fantan-play`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        userId: urlUserId, amount: parseFloat(currentBet), wallet: urlWallet, prediction: selectedNumber
+                    })
+                });
+
+                const serverRes = await response.json();
+                
+                if (serverRes.success || serverRes.success === true) {
+                    let parsedLiveBalance = serverRes.balance || serverRes.data?.balance || balance;
+                    balance = parseFloat(parsedLiveBalance);
+                    
+                    let targetGamePayload = serverRes.gameData || serverRes;
+                    animateFanTanBeadsSorting(targetGamePayload);
+                } else {
+                    // 🛑 [ব্যালেন্স জিরো ও নেগেটিভ বাজি ব্লকার অ্যালার্ট]: ওয়ান-শটে বাজি রিজেক্ট লক!
+                    alert(serverRes.message || "❌ আপনার অ্যাকাউন্ট ব্যালেন্স জিরো বা অপ্রতুল! দয়া করে রিচার্জ করুন ওস্তাদ।");
+                    stopFanTanState();
+                }
+            } catch (err) {
+                stopFanTanState();
+            }
+        }
+
+        function showFinalFanTanReward(status, finalResult, winAmount) {
+            const msgBox = document.getElementById("win-status-box");
+            const textMsg = document.getElementById("win-text-msg");
+            
+            if (status === "win") {
+                playAudio('win');
+                if (msgBox) msgBox.className = "win-status-container win-glow-bar";
+                if (textMsg) textMsg.innerHTML = `🎉 গ্র্যান্ড উইন ওস্তাদ! শেষ লাইনে কাটায় কাটায় <b>${finalResult}টি</b> পুঁতি বাকি ছিল। ওয়ালেটে ৳${winAmount} ক্রেডিট হয়েছে ভাই ভাই!`;
+            } else {
+                playAudio('wheel');
+                if (msgBox) msgBox.className = "win-status-container lose-glow-bar";
+                if (textMsg) textMsg.innerHTML = `💥 ওহ হো লস ওস্তাদ! শেষ লাইনে <b>${finalResult}টি</b> পুঁতি বাকি ছিল। আবার অন ফায়ার কদম ফেলুন ভাই ভাই!`;
+            }
+
+            if (typeof balance !== 'undefined' && !isNaN(balance)) {
+                if (document.getElementById("user-balance")) {
+                    document.getElementById("user-balance").innerText = balance.toFixed(2);
+                }
+            }
+
+            setTimeout(() => { fetchLiveBalance(); }, 1500);
+            stopFanTanState();
+
+            if (isAuto) {
+                autoInterval = setTimeout(() => {
+                    if (isAuto) handleFanTanPlayRoll();
+                }, 3500);
+            }
+        }
+
+        if (typeof io !== 'undefined') {
+            const socket = io();
+            socket.on("balanceUpdate", (data) => {
+                if (data && data.username === urlUserId) {
+                    if (data.balance !== undefined) {
+                        balance = parseFloat(data.balance);
+                        if (document.getElementById("user-balance")) {
+                            document.getElementById("user-balance").innerText = balance.toFixed(2);
+                        }
+                    }
+                    if (window.parent) window.parent.postMessage({ action: "refresh_wallet" }, "*");
+                }
+            });
+        }
+
+        async function fetchLiveBalance() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/fantan-balance?userId=${urlUserId}&wallet=${urlWallet}`);
+                const serverData = await response.json();
+                if (serverData.success || serverData.balance !== undefined) {
+                    balance = parseFloat(serverData.balance);
+                    if (document.getElementById("user-balance")) {
+                        document.getElementById("user-balance").innerText = balance.toFixed(2);
+                    }
+                }
+            } catch (e) { console.error("Balance stream link check pass"); }
+        }
+
+        window.onload = () => {
+            if (window.parent) window.parent.postMessage({ action: "refresh_wallet" }, "*");
+            fetchLiveBalance();
+        };
+
+        function toggleAuto() {
+            isAuto = !isAuto;
+            const autoEl = document.getElementById("auto-btn");
+            if (autoEl) autoEl.classList.toggle('active', isAuto);
+            if (isAuto && !isSpinning) handleFanTanPlayRoll();
+            playAudio('click');
+        }
+
+        function stopFanTanState() {
+            isSpinning = false;
+            if (document.getElementById("spin-btn")) document.getElementById("spin-btn").disabled = false;
+            if (!isAuto && autoInterval) clearTimeout(autoInterval);
+        }
+
+        const slotSounds = {
+            click: new Audio('spin2.mp3'), spin: new Audio('spin2.mp3'),
+            win: new Audio('win2.mp3'), wheel: new Audio('spin2.mp3')
+        };
+        Object.values(slotSounds).forEach(s => s.load());
+
+        function playAudio(type) {
+            try { slotSounds[type].currentTime = 0; slotSounds[type].play(); } catch(e) {}
+        }
+    </script>
+</body>
+</html>
+ 
+
