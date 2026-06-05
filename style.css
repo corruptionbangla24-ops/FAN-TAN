@@ -1,0 +1,214 @@
+/* ===================================================================================
+   🔮 FAN-TAN - LIVE CASINO MASTER STYLESHEET (বাটন ওপরে লিফটিং সুপ্রিম বর্ম)
+   =================================================================================== */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #05070c;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* 🔒 [মেগা কিলার হেডার ব্লকার বর্ম ভাই ভাই]: লবির মেইন হেডারের সাথে ডাবল ব্যালেন্স বক্স জ্যাম ওয়ান-শটে সাফ! */
+.header {
+    display: none !important;
+}
+
+/* 🏟️ ক্যাসিনো মেইন গোল্ডেন-নিওন ডার্ক টেবিল চাদর সিঙ্ক */
+body {
+    background: radial-gradient(circle at center, #0e1a2f 0%, #04060a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    position: relative;
+}
+
+/* 🏟️ ওরিজিনাল ঐতিহ্যবাহী লাক্সারি ফ্যান-টান গোল্ডেন-গ্রীন কার্পেট বোর্ড */
+.fantan-table-surface {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    height: 290px; /* ওস্তাদ, বাটন ওপরে তোলার জায়গা করতে টেবিল সাইড ১০ পিক্সেল কম্প্যাক্ট লক ভাই ভাই */
+    margin: 10px auto 0 auto;
+    background: radial-gradient(circle at center, #0c542d 0%, #053319 80%, #021a0c 100%);
+    border: 8px solid #5a3d12;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* 🔮 লাইভ গোল্ডেন পুঁতি কন্টেইনার জোন */
+.beads-display-bowl {
+    position: relative;
+    width: 85%;
+    height: 85%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.gold-bead-node {
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 35% 35%, #fff6b3 0%, #ffcc00 40%, #b38600 85%, #664d00 100%);
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.65), inset -1px -1px 3px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 🎯 ৪-লাইন নিওন বেটিং নাম্বার গ্রিড বোর্ড */
+.fantan-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 450px;
+    margin: 5px auto 8px auto; /* বটম মার্জিন বাড়িয়ে বাটনগুলোকে ওপরে লিফটিং করা হলো ওস্তাদ */
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.fantan-number-box {
+    background: linear-gradient(180deg, #151f35 0%, #0b111c 100%);
+    border: 2px solid #233252;
+    border-radius: 14px;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #8894b0;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: all 0.15s ease;
+}
+
+.fantan-number-box.active-fantan-bet {
+    border-color: #ffbb00 !important;
+    color: #ffbb00 !important;
+    background: linear-gradient(180deg, #2a2005 0%, #120e02 100%) !important;
+    box-shadow: 0 0 15px rgba(255,187,0,0.4), inset 0 0 10px rgba(255,187,0,0.2) !important;
+    transform: scale(1.03);
+}
+
+/* 📢 লাইভ মেসেজ স্ট্যাটাস বার */
+.win-status-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 10px;
+    margin: 4px 12px;
+    background: rgba(9, 12, 18, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+
+#win-text-msg {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 0.3px;
+}
+
+/* 🎛️ নিচের মেইন গেম কন্ট্রোল প্যানেল ফুটার (মোবাইলের ফুল ফ্রেমে ওয়ান-শটে ওপরে লিফটিং লক ওস্তাদ!) */
+.footer-controls {
+    position: relative;
+    z-index: 50; 
+    background: #07090e;
+    border-top: 1px solid #161b29;
+    padding: 20px 15px 50px 15px; /* 👈 ওস্তাদ! প্যাডিং বাড়িয়ে মেইন বাটন প্যানেলটিকে কাটায় কাটায় ২৫ পিক্সেল ওপরে লিফটিং লক! */
+    box-shadow: 0 -8px 25px rgba(0,0,0,0.7);
+}
+
+.play-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    max-width: 450px;
+    margin: 0 auto;
+    margin-bottom: 25px; /* 👈 এই ক্রুশিয়াল লাইনের কারণে স্টেক বোতাম কোনোভাবে নিচে নামবে না ওস্তাদ! */
+}
+
+/* প্লাস-মাইনাস নব */
+.bet-btn-nav {
+    background: #111522;
+    border: 1px solid #20293d;
+    color: #ffaa00;
+    font-size: 18px;
+    font-weight: 800;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🚀 মেইন ডিল অ্যাকশন বোতাম (PLACE BET কিলার গোল্ডেন গ্লো) */
+.play-btn {
+    flex: 1;
+    background: linear-gradient(180deg, #ffbb00 0%, #d48800 100%);
+    color: #000000;
+    font-size: 15px;
+    font-weight: 900;
+    border: none;
+    padding: 12px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(212,136,0,0.3);
+    transition: all 0.15s ease;
+}
+
+.play-btn:active {
+    transform: scale(0.96);
+}
+
+.play-btn:disabled {
+    background: #141721 !important;
+    border-color: #1f2536 !important;
+    color: #4b5563 !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+}
+
+/* 🤖 অটো বোতাম আইকন গ্রিড */
+.icon-group { display: flex; align-items: center; }
+.icon-btn {
+    background: #111522;
+    border: 1px solid #20293d;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffaa00;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.icon-btn.active { background: #ffaa00; color: #000000; box-shadow: 0 0 10px rgba(255,170,0,0.4); }
+
+/* 💥 উইন-লস নিয়ন গলোয়িং বর্ডার অ্যানিমেশন বর্ম */
+.win-glow-bar { border-color: rgba(0, 255, 136, 0.4) !important; background: rgba(0, 255, 136, 0.05) !important; }
+.win-glow-bar #win-text-msg { color: #00ff88 !important; }
+.lose-glow-bar { border-color: rgba(255, 51, 102, 0.4) !important; background: rgba(255, 51, 102, 0.05) !important; }
+.lose-glow-bar #win-text-msg { color: #ff3366 !important; }
