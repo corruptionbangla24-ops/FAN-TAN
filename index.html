@@ -201,7 +201,7 @@
                 bead.className = "gold-bead-node";
                 container.appendChild(bead);
                 
-                               setTimeout(() => {
+                                   setTimeout(() => {
                     bead.style.opacity = "1";
                     bead.style.transform = "scale(1)";
                 }, i * 15);
@@ -209,20 +209,22 @@
 
             playAudio('spin');
 
-            // ২. ৪টি করে পুঁতি সরিয়ে শেষ লাইনে নিখুঁত এলাইনমেন্ট টাইট লক ওস্তাদ!
+            // 🔮 [২. ৪টি করে পুঁতি সরিয়ে শেষ লাইনে নিখুঁত এলাইনমেন্ট ও ওরিজিনাল আরটিপি সেটেলমেন্ট লক ওস্তাদ!]
             setTimeout(() => {
+                // 🔒 [গ্র্যান্ড রিসেট বর্ম]: প্রতি রাউন্ডে বাটি বা কন্টেইনারের ডিসপ্লে মোড ও ওল্ড মেমোরি ওয়ান-শটে সাফ করে গ্রিড ইনিশিয়েট!
+                container.style.display = "grid";
+                container.style.gridTemplateColumns = "repeat(10, 1fr)";
+                container.style.justifyContent = "unset";
+                container.style.gap = "6px";
                 container.innerHTML = "";
-                container.style.display = "flex";
-                container.style.justifyContent = "center";
-                container.style.gap = "10px";
 
-                // শুধুমাত্র শেষ লাইনের অবশিষ্ট পুঁতিগুলোই স্ক্রিনে জলজল করে কাউন্ট হবে!
+                // আন্তর্জাতিক ক্যাসিনো নিয়ম মেনে শেষ লাইনের অবশিষ্ট পুঁতিগুলোই কাটায় কাটায় এখানে কাউন্ট ও এনিমেশন ফ্লাশ হবে ভাই ভাই
                 for (let i = 0; i < finalResult; i++) {
                     const bead = document.createElement("div");
                     bead.className = "gold-bead-node";
                     bead.style.opacity = "1";
                     bead.style.transform = "scale(1.3)";
-                    bead.style.boxShadow = "0 0 10px #ffbb00";
+                    bead.style.boxShadow = "0 0 12px #ffbb00, inset -1px -1px 3px rgba(0,0,0,0.4)";
                     container.appendChild(bead);
                     playAudio('click');
                 }
@@ -246,6 +248,15 @@
             if (document.getElementById("spin-btn")) document.getElementById("spin-btn").disabled = true;
             if (document.getElementById("win-status-box")) document.getElementById("win-status-box").className = "win-status-container";
             if (document.getElementById("win-text-msg")) document.getElementById("win-text-msg").innerText = "🔮 ডিলারের বাটি খোলা হচ্ছে... পুঁতিগুলো ৪ ভাগে সাজানোর অপেক্ষা ওস্তাদ...";
+            
+            // 🔒 [লাইভ ডিসপ্লে রিসেট ইন্টারসেপ্টর]: ২য় বার বাজি ধরার সময় ওল্ড পুঁতি এক মিলি-সেকেন্ডে ভ্যানিশ করে নতুন মেমোরি অন ফায়ার!
+            const container = document.getElementById("fantan-beads-container");
+            if (container) {
+                container.innerHTML = "";
+                container.style.display = "grid";
+                container.style.gridTemplateColumns = "repeat(10, 1fr)";
+            }
+            
             playAudio('click');
 
             try {
@@ -266,7 +277,6 @@
                     let targetGamePayload = serverRes.gameData || serverRes;
                     animateFanTanBeadsSorting(targetGamePayload);
                 } else {
-                    // 🛑 [ব্যালেন্স জিরো ও নেগেটিভ বাজি ব্লকার অ্যালার্ট]: ওয়ান-শটে বাজি রিজেক্ট লক!
                     alert(serverRes.message || "❌ আপনার অ্যাকাউন্ট ব্যালেন্স জিরো বা অপ্রতুল! দয়া করে রিচার্জ করুন ওস্তাদ।");
                     stopFanTanState();
                 }
@@ -364,5 +374,4 @@
     </script>
 </body>
 </html>
- 
-
+            
